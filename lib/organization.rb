@@ -13,5 +13,5 @@ class Organization
 
   def add_child_organization(name)
     @children << ChildOrganization.new(name, parent=self)
-  end 
+  end
 end

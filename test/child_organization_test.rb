@@ -1,14 +1,18 @@
-gem 'minitest'
-require 'minitest/autorun'
-require 'minitest/pride'
-require_relative '../lib/child_organization'
+require_relative './test_helper.rb'
 
 class ChildOrganizationTest < MiniTest::Unit::TestCase
+  def setup
+    @root_org  = RootOrganization.new("Root")
+    @org       = Organization.new("Org 1", @root_org)
+    @child_org = ChildOrganization.new("Child Org 1", @org)
+  end
+
   def test_a_child_organization_knows_about_itself
-    # I also don't like this test, but I'm tired
+    assert_equal "Child Org 1", @child_org.name
+  end
 
-    child = ChildOrganization.new("Child Org 1", Organization)
-
-    assert_equal "Child Org 1", child.name
+  def test_a_child_organization_knows_about_its_family
+    assert_equal "Org 1",       @child_org.parent.name
+    assert_equal "Root",        @child_org.parent.parent.name
   end
 end
