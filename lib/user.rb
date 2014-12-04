@@ -30,4 +30,19 @@ class User
     roles = self.collect_user_roles
     roles.any? { |r| r.role == :denied }
   end
+
+  def is_admin_for_specific_org?(org)
+    roles = self.collect_user_roles
+    roles.any? { |r| r.role == :admin && r.organization == org}
+  end
+
+  def is_user_for_specific_org?(org)
+    roles = self.collect_user_roles
+    roles.any? { |r| r.role == :user && r.organization == org}
+  end
+
+  def is_denied_for_specific_org?(org)
+    roles = self.collect_user_roles
+    roles.any? { |r| r.role == :denied && r.organization == org}
+  end
 end
