@@ -1,7 +1,6 @@
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'pry'
 require_relative '../lib/organization'
 
 class OrganizationTest < MiniTest::Unit::TestCase
