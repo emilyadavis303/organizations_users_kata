@@ -6,8 +6,8 @@ class UserRole
   ROLES = [:admin, :user, :denied]
 
   def initialize(user, organization, role)
-    @user = user
+    @user         = user
     @organization = organization
-    @role = role.downcase.to_sym
+    @role         = role.downcase.to_sym
   end
 end

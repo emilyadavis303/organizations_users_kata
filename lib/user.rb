@@ -12,10 +12,6 @@ class User
     @roles << UserRole.new(self, organization, role)
   end
 
-  def collect_user_roles
-    roles.collect { |r| r }
-  end
-
   def is_admin?
     roles = self.collect_user_roles
     roles.any? { |r| r.role == :admin }
